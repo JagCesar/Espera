@@ -32,13 +32,15 @@ struct RotatingCircleWithGap: View {
 }
 
 private struct LoadingCircle: View {
-    var circleColor: Color
+    let circleColor: Color
+    let scale: CGFloat
     private let circleWidth: CGFloat = 8
 
     var body: some View {
         Circle()
             .fill(circleColor)
             .frame(width: circleWidth, height: circleWidth, alignment: .center)
+            .scaleEffect(scale)
     }
 }
 
@@ -52,32 +54,34 @@ struct LoadingFlowerView: View {
             .repeatForever(autoreverses: true)
     }
 
-    @State var color: Color = .white
+    @State private var color: Color = .init(white: 0.3)
+    @State private var scale: CGFloat = 0.98
 
     var body: some View {
         HStack(spacing: 1) {
             VStack(spacing: 2) {
-                LoadingCircle(circleColor: color)
+                LoadingCircle(circleColor: color, scale: scale)
                     .animation(foreverAnimation.delay(singleCircleAnimationDuration*5))
-                LoadingCircle(circleColor: color)
+                LoadingCircle(circleColor: color, scale: scale)
                     .animation(foreverAnimation.delay(singleCircleAnimationDuration*4))
             }
             VStack(alignment: .center, spacing: 1) {
-                LoadingCircle(circleColor: color)
+                LoadingCircle(circleColor: color, scale: scale)
                     .animation(foreverAnimation)
-                LoadingCircle(circleColor: .clear)
-                LoadingCircle(circleColor: color)
-                .animation(foreverAnimation.delay(singleCircleAnimationDuration*3))
+                LoadingCircle(circleColor: .clear, scale: 1)
+                LoadingCircle(circleColor: color, scale: scale)
+                    .animation(foreverAnimation.delay(singleCircleAnimationDuration*3))
             }
             VStack(alignment: .center, spacing: 2) {
-                LoadingCircle(circleColor: color)
+                LoadingCircle(circleColor: color, scale: scale)
                     .animation(foreverAnimation.delay(singleCircleAnimationDuration*1))
-                LoadingCircle(circleColor: color)
-                .animation(foreverAnimation.delay(singleCircleAnimationDuration*2))
+                LoadingCircle(circleColor: color, scale: scale)
+                    .animation(foreverAnimation.delay(singleCircleAnimationDuration*2))
             }
         }
         .onAppear {
-            self.color = .init(white: 0.3)
+            self.color = .white
+            self.scale = 1.02
         }
     }
 }
