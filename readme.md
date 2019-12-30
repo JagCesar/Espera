@@ -8,7 +8,7 @@ The best part of using components made in SwiftUI is that they work on all Apple
 
 ## Preview
 
-![A gif showing the supported loading indicators](loading.gif)
+![A gif showing the supported loading indicators](Example/loading.gif)
 
 ## Made by
 - [JagCesar](https://github.com/jagcesar)
