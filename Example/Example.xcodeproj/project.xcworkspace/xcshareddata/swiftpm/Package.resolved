@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Espera",
+        "repositoryURL": "git@github.com:JagCesar/Espera.git",
+        "state": {
+          "branch": "master",
+          "revision": "fc1f43a1881feb03ab15a63a97cb0d61fddd075a",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
