@@ -90,11 +90,102 @@ public struct LoadingFlowerView: View {
     }
 }
 
+private class StretchyShapeModel {
+    var forwards = true
+}
+
+extension StretchyShape {
+    enum Side {
+        case front, back
+    }
+}
+
+private struct StretchyShape: Shape {
+    
+    var progress: Double
+    init(progress: Double) {
+        self.progress = progress
+    }
+    
+    private var model = StretchyShapeModel()
+    
+    func path(in rect: CGRect) -> Path {
+        Path { path in
+            
+            addSide(.back, to: &path, rect: rect)
+            addSide(.front, to: &path, rect: rect)
+            
+            if progress >= 1 {
+                model.forwards.toggle()
+            }
+        }
+    }
+    
+    var animatableData: Double {
+        set { progress = newValue }
+        get { progress }
+    }
+    
+    private func easeInOutQuad(_ x: CGFloat) -> CGFloat {
+        if x <= 0.5 {
+            return pow(x, 2) * 2
+        }
+        
+        let x = x - 0.5
+        return 2 * x * (1 - x) + 0.5
+    }
+    
+    private func addSide(_ side: Side, to path: inout Path, rect: CGRect) {
+        let lag = 0.1
+        
+        let laggedProgress: CGFloat
+        let startAngle: Angle
+        let endAngle: Angle
+        switch side {
+            case .front:
+                laggedProgress = CGFloat(progress + lag)
+                startAngle = Angle(degrees: 90)
+                endAngle = Angle(degrees: -90)
+            case .back:
+                laggedProgress = CGFloat(progress - lag)
+                startAngle = Angle(degrees: -90)
+                endAngle = Angle(degrees: 90)
+        }
+        
+        var progress = max(0, min(1, laggedProgress))
+        
+        if !model.forwards {
+            progress = 1 - progress
+        }
+        
+        let radius = rect.height / 2
+        let offset = easeInOutQuad(progress) * (rect.width - rect.height)
+        
+        path.addArc(center: CGPoint(x: radius + offset, y: radius), radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: model.forwards)
+    }
+}
+
+struct StretchLoadingView: View {
+    
+    @State private var progress: Double = 0
+    
+    var body: some View {
+        StretchyShape(progress: progress)
+            .animation(Animation.linear(duration: 0.6).repeatForever(autoreverses: false))
+            .onAppear {
+                withAnimation {
+                    self.progress = 1
+                }
+        }
+    }
+}
+
 struct Previews: PreviewProvider {
     static var previews: some View {
         Group {
             RotatingCircleWithGap()
             LoadingFlowerView()
+            StretchLoadingView().frame(width: 60, height: 14)
         }
     }
 }

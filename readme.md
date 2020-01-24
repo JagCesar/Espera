@@ -1,8 +1,8 @@
 # Espera
 
-Espera is loading indicators written in Swift UI. For now there are only two of them, a rotating circle with a gap (you've seen it on the App Store) and the rotating flower you've seen on watchOS.
+Espera is a collection of loading indicators written in Swift UI. For now there are only three of them, a rotating circle with a gap (you've seen it on the App Store), the rotating flower you've seen on watchOS and a squishy circle.
 
-These two components aren't part of UIKit or watchKit so we decided to create them and make them available to you.
+None of these loading indicators are a part of UIKit or watchKit so we decided to create them and make them available to you.
 
 The best part of using components made in SwiftUI is that they work on all Apple platforms. ❤️ This means that these loading indicators work great on:
 - iOS 📱
