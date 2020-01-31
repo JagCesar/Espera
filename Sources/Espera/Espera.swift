@@ -196,6 +196,10 @@ public struct StretchProgressView: View {
     
     @Binding public var progress: Double
     
+    public init(progress: Binding<Double>) {
+        _progress = progress
+    }
+    
     public var body: some View {
         StretchyShape(progress: progress, mode: .stretchy)
     }
