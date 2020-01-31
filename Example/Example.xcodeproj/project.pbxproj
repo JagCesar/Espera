@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320DA55423E46A95008602EA /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = 320DA55323E46A95008602EA /* Espera */; };
 		FC3BD6C923BAB3C800D673F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3BD6C823BAB3C800D673F2 /* AppDelegate.swift */; };
 		FC3BD6CB23BAB3C800D673F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3BD6CA23BAB3C800D673F2 /* SceneDelegate.swift */; };
 		FC3BD6CD23BAB3C800D673F2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3BD6CC23BAB3C800D673F2 /* ContentView.swift */; };
@@ -35,7 +36,6 @@
 		FC3BD74223BAB55000D673F2 /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC3BD74123BAB55000D673F2 /* Espera */; };
 		FC68EBA223BAB6150034978B /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC68EBA123BAB6150034978B /* Espera */; };
 		FC68EBA423BAB6A80034978B /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC68EBA323BAB6A80034978B /* Espera */; };
-		FC68EBD323BABEDF0034978B /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC68EBD223BABEDF0034978B /* Espera */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +81,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		320DA55223E46A87008602EA /* Espera */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Espera; path = ..; sourceTree = "<group>"; };
 		FC3BD6C623BAB3C800D673F2 /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC3BD6C823BAB3C800D673F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC3BD6CA23BAB3C800D673F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC68EBD323BABEDF0034978B /* Espera in Frameworks */,
+				320DA55423E46A95008602EA /* Espera in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +155,7 @@
 		FC3BD6A223BAB36600D673F2 = {
 			isa = PBXGroup;
 			children = (
+				320DA55223E46A87008602EA /* Espera */,
 				FC3BD73723BAB4E200D673F2 /* Shared */,
 				FC3BD6C723BAB3C800D673F2 /* iOS */,
 				FC3BD6DF23BAB40800D673F2 /* tvOS */,
@@ -302,7 +304,7 @@
 			);
 			name = iOS;
 			packageProductDependencies = (
-				FC68EBD223BABEDF0034978B /* Espera */,
+				320DA55323E46A95008602EA /* Espera */,
 			);
 			productName = iOS;
 			productReference = FC3BD6C623BAB3C800D673F2 /* iOS.app */;
@@ -442,7 +444,6 @@
 			);
 			mainGroup = FC3BD6A223BAB36600D673F2;
 			packageReferences = (
-				FC68EBCF23BABED20034978B /* XCRemoteSwiftPackageReference "Espera" */,
 			);
 			productRefGroup = FC3BD6AC23BAB36600D673F2 /* Products */;
 			projectDirPath = "";
@@ -1028,18 +1029,11 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		FC68EBCF23BABED20034978B /* XCRemoteSwiftPackageReference "Espera" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:JagCesar/Espera.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
+		320DA55323E46A95008602EA /* Espera */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Espera;
+		};
 		FC3BD74123BAB55000D673F2 /* Espera */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Espera;
@@ -1050,11 +1044,6 @@
 		};
 		FC68EBA323BAB6A80034978B /* Espera */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Espera;
-		};
-		FC68EBD223BABEDF0034978B /* Espera */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC68EBCF23BABED20034978B /* XCRemoteSwiftPackageReference "Espera" */;
 			productName = Espera;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -98,13 +98,19 @@ extension StretchyShape {
     enum Side {
         case front, back
     }
+    
+    enum Mode {
+        case lagged, stretchy
+    }
 }
 
 private struct StretchyShape: Shape {
     
     var progress: Double
-    init(progress: Double) {
+    var mode: Mode
+    init(progress: Double, mode: Mode = .lagged) {
         self.progress = progress
+        self.mode = mode
     }
     
     private var model = StretchyShapeModel()
@@ -147,7 +153,11 @@ private struct StretchyShape: Shape {
                 startAngle = Angle(degrees: 90)
                 endAngle = Angle(degrees: -90)
             case .back:
-                laggedProgress = CGFloat(progress - lag)
+                if mode == .stretchy {
+                    laggedProgress = 0
+                } else {
+                    laggedProgress = CGFloat(progress - lag)
+                }
                 startAngle = Angle(degrees: -90)
                 endAngle = Angle(degrees: 90)
         }
@@ -165,11 +175,13 @@ private struct StretchyShape: Shape {
     }
 }
 
-struct StretchLoadingView: View {
+public struct StretchLoadingView: View {
     
     @State private var progress: Double = 0
     
-    var body: some View {
+    public init() { }
+    
+    public var body: some View {
         StretchyShape(progress: progress)
             .animation(Animation.linear(duration: 0.6).repeatForever(autoreverses: false))
             .onAppear {
@@ -180,12 +192,26 @@ struct StretchLoadingView: View {
     }
 }
 
+public struct StretchProgressView: View {
+    
+    @Binding public var progress: Double
+    
+    public init(progress: Binding<Double>) {
+        _progress = progress
+    }
+    
+    public var body: some View {
+        StretchyShape(progress: progress, mode: .stretchy)
+    }
+}
+
 struct Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RotatingCircleWithGap()
+            RotatingCircleWithGap().frame(width: 100, height: 100)
             LoadingFlowerView()
             StretchLoadingView().frame(width: 60, height: 14)
+            StretchProgressView(progress: .constant(0.5)).frame(width: 60, height: 14)
         }
     }
 }
