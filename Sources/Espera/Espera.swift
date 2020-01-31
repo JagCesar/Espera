@@ -194,19 +194,20 @@ public struct StretchLoadingView: View {
 
 public struct StretchProgressView: View {
     
-    @Binding public var progress: CGFloat
+    @Binding public var progress: Double
     
     public var body: some View {
-        StretchyShape(progress: Double(progress), mode: .stretchy)
+        StretchyShape(progress: progress, mode: .stretchy)
     }
 }
 
 struct Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RotatingCircleWithGap()
+            RotatingCircleWithGap().frame(width: 100, height: 100)
             LoadingFlowerView()
             StretchLoadingView().frame(width: 60, height: 14)
+            StretchProgressView(progress: .constant(0.5)).frame(width: 60, height: 14)
         }
     }
 }

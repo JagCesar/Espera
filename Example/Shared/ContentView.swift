@@ -10,10 +10,15 @@ import SwiftUI
 import Espera
 
 struct ContentView: View {
+    @State var progress: Double = 0
+    
     var body: some View {
         VStack {
-            RotatingCircleWithGap()
+            RotatingCircleWithGap().frame(width: 100, height: 100)
             LoadingFlowerView()
+            StretchLoadingView().frame(width: 60, height: 14)
+            StretchProgressView(progress: $progress).frame(width: 60, height: 14)
+            Slider(value: $progress)
         }
     }
 }
