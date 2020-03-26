@@ -35,7 +35,6 @@
 		FC3BD74223BAB55000D673F2 /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC3BD74123BAB55000D673F2 /* Espera */; };
 		FC68EBA223BAB6150034978B /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC68EBA123BAB6150034978B /* Espera */; };
 		FC68EBA423BAB6A80034978B /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC68EBA323BAB6A80034978B /* Espera */; };
-		FC68EBD323BABEDF0034978B /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC68EBD223BABEDF0034978B /* Espera */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +112,7 @@
 		FC3BD72623BAB47300D673F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC3BD72923BAB47300D673F2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FC3BD72B23BAB47300D673F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCCA5758242D63CC002E9B88 /* .. */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ..; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC68EBD323BABEDF0034978B /* Espera in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +153,7 @@
 		FC3BD6A223BAB36600D673F2 = {
 			isa = PBXGroup;
 			children = (
+				FCCA5758242D63CC002E9B88 /* .. */,
 				FC3BD73723BAB4E200D673F2 /* Shared */,
 				FC3BD6C723BAB3C800D673F2 /* iOS */,
 				FC3BD6DF23BAB40800D673F2 /* tvOS */,
@@ -302,7 +302,6 @@
 			);
 			name = iOS;
 			packageProductDependencies = (
-				FC68EBD223BABEDF0034978B /* Espera */,
 			);
 			productName = iOS;
 			productReference = FC3BD6C623BAB3C800D673F2 /* iOS.app */;
@@ -442,7 +441,6 @@
 			);
 			mainGroup = FC3BD6A223BAB36600D673F2;
 			packageReferences = (
-				FC68EBCF23BABED20034978B /* XCRemoteSwiftPackageReference "Espera" */,
 			);
 			productRefGroup = FC3BD6AC23BAB36600D673F2 /* Products */;
 			projectDirPath = "";
@@ -1028,17 +1026,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		FC68EBCF23BABED20034978B /* XCRemoteSwiftPackageReference "Espera" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:JagCesar/Espera.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		FC3BD74123BAB55000D673F2 /* Espera */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1050,11 +1037,6 @@
 		};
 		FC68EBA323BAB6A80034978B /* Espera */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Espera;
-		};
-		FC68EBD223BABEDF0034978B /* Espera */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FC68EBCF23BABED20034978B /* XCRemoteSwiftPackageReference "Espera" */;
 			productName = Espera;
 		};
 /* End XCSwiftPackageProductDependency section */
