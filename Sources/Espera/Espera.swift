@@ -36,8 +36,8 @@ public struct RotatingCircleWithGap: View {
 private struct LoadingCircle: View {
     let circleColor: Color
     let scale: CGFloat
-    private let circleWidth: CGFloat = 8
-
+    let circleWidth: CGFloat
+    
     var body: some View {
         Circle()
             .fill(circleColor)
@@ -47,6 +47,7 @@ private struct LoadingCircle: View {
 }
 
 public struct LoadingFlowerView: View {
+    
     private let animationDuration: Double = 0.6
     private var singleCircleAnimationDuration: Double {
         return animationDuration/3
@@ -55,32 +56,34 @@ public struct LoadingFlowerView: View {
         Animation.linear(duration: animationDuration)
             .repeatForever(autoreverses: true)
     }
-
+    
     @State private var color: Color = .init(white: 0.3)
     @State private var scale: CGFloat = 0.98
-
+    
     public init() { }
-
+    
     public var body: some View {
-        HStack(spacing: 1) {
-            VStack(spacing: 2) {
-                LoadingCircle(circleColor: color, scale: scale)
-                    .animation(foreverAnimation.delay(singleCircleAnimationDuration*5))
-                LoadingCircle(circleColor: color, scale: scale)
-                    .animation(foreverAnimation.delay(singleCircleAnimationDuration*4))
-            }
-            VStack(alignment: .center, spacing: 1) {
-                LoadingCircle(circleColor: color, scale: scale)
-                    .animation(foreverAnimation)
-                LoadingCircle(circleColor: .clear, scale: 1)
-                LoadingCircle(circleColor: color, scale: scale)
-                    .animation(foreverAnimation.delay(singleCircleAnimationDuration*3))
-            }
-            VStack(alignment: .center, spacing: 2) {
-                LoadingCircle(circleColor: color, scale: scale)
-                    .animation(foreverAnimation.delay(singleCircleAnimationDuration*1))
-                LoadingCircle(circleColor: color, scale: scale)
-                    .animation(foreverAnimation.delay(singleCircleAnimationDuration*2))
+        GeometryReader { [color, scale, singleCircleAnimationDuration, foreverAnimation] reader in
+            HStack(spacing: 1) {
+                VStack(spacing: 2) {
+                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
+                        .animation(foreverAnimation.delay(singleCircleAnimationDuration*5))
+                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
+                        .animation(foreverAnimation.delay(singleCircleAnimationDuration*4))
+                }
+                VStack(alignment: .center, spacing: 1) {
+                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
+                        .animation(foreverAnimation)
+                    LoadingCircle(circleColor: .clear, scale: 1, circleWidth: reader.size.width)
+                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
+                        .animation(foreverAnimation.delay(singleCircleAnimationDuration*3))
+                }
+                VStack(alignment: .center, spacing: 2) {
+                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
+                        .animation(foreverAnimation.delay(singleCircleAnimationDuration*1))
+                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
+                        .animation(foreverAnimation.delay(singleCircleAnimationDuration*2))
+                }
             }
         }
         .onAppear {
