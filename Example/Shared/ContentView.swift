@@ -15,6 +15,7 @@ struct ContentView: View {
             RotatingCircleWithGap()
             LoadingFlowerView()
         }
+        .background(Color.black)
     }
 }
 
