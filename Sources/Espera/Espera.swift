@@ -63,33 +63,48 @@ public struct LoadingFlowerView: View {
     public init() { }
 
     public var body: some View {
-        GeometryReader { [color, scale, singleCircleAnimationDuration, foreverAnimation] reader in
-            HStack(spacing: 1) {
-                VStack(spacing: 2) {
-                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
-                        .animation(foreverAnimation.delay(singleCircleAnimationDuration*5))
-                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
-                        .animation(foreverAnimation.delay(singleCircleAnimationDuration*4))
+        GeometryReader { [color, scale, singleCircleAnimationDuration, foreverAnimation] reader -> AnyView in
+
+            let minLength = min(reader.size.width, reader.size.height)
+            let thirdOfMinLength = minLength / 3
+
+            let proportionalSpacing: CGFloat = 1 / 26
+            let spacing = minLength * proportionalSpacing
+
+            // THIS IS FINE :D
+            // Fix later, ok?
+            let leafDiameter = thirdOfMinLength - (spacing - proportionalSpacing * thirdOfMinLength)
+
+            return AnyView(
+                HStack(spacing: spacing) {
+                    VStack(spacing: spacing) {
+                        LoadingCircle(circleColor: color, scale: scale, circleWidth: leafDiameter)
+                            .animation(foreverAnimation.delay(singleCircleAnimationDuration*5))
+                        LoadingCircle(circleColor: color, scale: scale, circleWidth: leafDiameter)
+                            .animation(foreverAnimation.delay(singleCircleAnimationDuration*4))
+                    }
+                    VStack(alignment: .center, spacing: spacing) {
+                        LoadingCircle(circleColor: color, scale: scale, circleWidth: leafDiameter)
+                            .animation(foreverAnimation)
+                        LoadingCircle(circleColor: .clear, scale: 1, circleWidth: leafDiameter)
+                        LoadingCircle(circleColor: color, scale: scale, circleWidth: leafDiameter)
+                            .animation(foreverAnimation.delay(singleCircleAnimationDuration*3))
+                    }
+                    VStack(alignment: .center, spacing: spacing) {
+                        LoadingCircle(circleColor: color, scale: scale, circleWidth: leafDiameter)
+                            .animation(foreverAnimation.delay(singleCircleAnimationDuration*1))
+                        LoadingCircle(circleColor: color, scale: scale, circleWidth: leafDiameter)
+                            .animation(foreverAnimation.delay(singleCircleAnimationDuration*2))
+                    }
                 }
-                VStack(alignment: .center, spacing: 1) {
-                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
-                        .animation(foreverAnimation)
-                    LoadingCircle(circleColor: .clear, scale: 1, circleWidth: reader.size.width)
-                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
-                        .animation(foreverAnimation.delay(singleCircleAnimationDuration*3))
-                }
-                VStack(alignment: .center, spacing: 2) {
-                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
-                        .animation(foreverAnimation.delay(singleCircleAnimationDuration*1))
-                    LoadingCircle(circleColor: color, scale: scale, circleWidth: reader.size.width)
-                        .animation(foreverAnimation.delay(singleCircleAnimationDuration*2))
-                }
-            }
+            )
         }
         .onAppear {
             self.color = .white
-            self.scale = 1.02
+            self.scale = 1
         }
+        .aspectRatio(contentMode: .fit)
+        .frame(idealWidth: 26)
     }
 }
 

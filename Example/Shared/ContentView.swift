@@ -14,6 +14,8 @@ struct ContentView: View {
         VStack {
             RotatingCircleWithGap()
             LoadingFlowerView()
+                // Use fixedSize() to get default size of component, override with .frame()
+                .fixedSize()
         }
         .background(Color.black)
     }
