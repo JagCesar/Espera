@@ -35,6 +35,7 @@
 		FC3BD74223BAB55000D673F2 /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC3BD74123BAB55000D673F2 /* Espera */; };
 		FC68EBA223BAB6150034978B /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC68EBA123BAB6150034978B /* Espera */; };
 		FC68EBA423BAB6A80034978B /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FC68EBA323BAB6A80034978B /* Espera */; };
+		FCE8D045243007D900B90083 /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = FCE8D044243007D900B90083 /* Espera */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCE8D045243007D900B90083 /* Espera in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +304,7 @@
 			);
 			name = iOS;
 			packageProductDependencies = (
+				FCE8D044243007D900B90083 /* Espera */,
 			);
 			productName = iOS;
 			productReference = FC3BD6C623BAB3C800D673F2 /* iOS.app */;
@@ -1038,6 +1041,10 @@
 			productName = Espera;
 		};
 		FC68EBA323BAB6A80034978B /* Espera */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Espera;
+		};
+		FCE8D044243007D900B90083 /* Espera */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Espera;
 		};
