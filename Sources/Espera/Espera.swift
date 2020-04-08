@@ -57,10 +57,14 @@ public struct LoadingFlowerView: View {
             .repeatForever(autoreverses: true)
     }
 
-    @State private var color: Color = .init(white: 0.3)
-    @State private var scale: CGFloat = 0.98
+    private let originalColor: Color
+    public init(color: Color = .white) {
+        self.originalColor = color
+        self.color = color.opacity(0.3)
+    }
 
-    public init() { }
+    @State private var color = Color.white.opacity(0.3)
+    @State private var scale: CGFloat = 0.98
 
     public var body: some View {
         GeometryReader { [color, scale, singleCircleAnimationDuration, foreverAnimation] reader -> AnyView in
@@ -100,7 +104,7 @@ public struct LoadingFlowerView: View {
             )
         }
         .onAppear {
-            self.color = .white
+            self.color = self.originalColor
             self.scale = 1
         }
         .aspectRatio(contentMode: .fit)
